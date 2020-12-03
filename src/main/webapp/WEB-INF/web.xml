@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>Drinkology</display-name>
+	<!--  Servlet to perform transaction with all recipes.  -->
   <servlet>
   	<description></description>
   	<display-name>RecipesServlet</display-name>
@@ -11,6 +12,7 @@
   	<servlet-name>RecipesServlet</servlet-name>
   	<url-pattern>/recipes/*</url-pattern>
   </servlet-mapping>
+  <!-- Servlet to perform transactions of individual recipes. -->
   <servlet>
   	<description></description>
   	<display-name>RecipeServlet</display-name>
@@ -21,4 +23,16 @@
   	<servlet-name>RecipeServlet</servlet-name>
   	<url-pattern>/recipe/*</url-pattern>
   </servlet-mapping>
+  <!-- Servlet to perform transactions with users. -->
+  <servlet>
+  	<description></description>
+  	<display-name>UserServlet</display-name>
+  	<servlet-name>UserServlet</servlet-name>
+  	<servlet-class>com.gerardoperez.drinkology.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserServlet</servlet-name>
+  	<url-pattern>/users/*</url-pattern>
+  </servlet-mapping>
+  <!-- -->
 </web-app>

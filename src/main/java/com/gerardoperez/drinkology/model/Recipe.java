@@ -9,8 +9,9 @@ public class Recipe {
     private Ingredient mixer;
     private Ingredient sweetener;
     private Ingredient garnish;
+    private int owner_id;
 
-    public Recipe(int id, String name, Ingredient liquor1, Ingredient liquor2, Ingredient mixer, Ingredient sweetener, Ingredient garnish) {
+    public Recipe(int id, String name, Ingredient liquor1, Ingredient liquor2, Ingredient mixer, Ingredient sweetener, Ingredient garnish, int owner_id) {
         this.id = id;
         this.name = name;
         this.liquor1 = liquor1;
@@ -18,6 +19,7 @@ public class Recipe {
         this.mixer = mixer;
         this.sweetener = sweetener;
         this.garnish = garnish;
+        this.owner_id = owner_id;
     }
 
     public int getId() {
@@ -76,6 +78,13 @@ public class Recipe {
         this.garnish = garnish;
     }
 
+	public int getOwner() {
+		return owner_id;
+	}
+
+	public void setOwner(int owner) {
+		this.owner_id = owner;
+	}
 
     @Override
     public String toString() {
@@ -89,4 +98,6 @@ public class Recipe {
                 ", garnish=" + garnish +
                 '}';
     }
+
+
 }

@@ -49,6 +49,7 @@ public class DatabaseRecipeDAO {
 				String sweetener_name = resultSet.getString(15);
 				int garnish_id = resultSet.getInt(16);
 				String garnish_name = resultSet.getString(17);
+				int owner_id = resultSet.getInt(18);
 				
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
@@ -56,7 +57,7 @@ public class DatabaseRecipeDAO {
 				Ingredient sweetener = new Ingredient(sweetener_id, sweetener_name, "Sweetener");
 				Ingredient garnish = new Ingredient(garnish_id, garnish_name, "Garnish");
 				
-				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish);
+				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish, owner_id);
 				
 				recipes.add(recipe);
 			}
@@ -70,12 +71,12 @@ public class DatabaseRecipeDAO {
 		return recipes;
 	}
 	
-	public Recipe insertRecipe(String recipe_name, Ingredient liquor1, Ingredient liquor2, Ingredient mixer, Ingredient sweetener, Ingredient garnish) {
+	public Recipe insertRecipe(String recipe_name, Ingredient liquor1, Ingredient liquor2, Ingredient mixer, Ingredient sweetener, Ingredient garnish, int owner_id) {
 		
 		String sqlQuery = "INSERT INTO recipe "
-						+ "(recipe_name, liquor1_id, liquor2_id, mixer_id, sweetener_id, garnish_id) "
+						+ "(recipe_name, liquor1_id, liquor2_id, mixer_id, sweetener_id, garnish_id, owner_id) "
 						+ "VALUES"
-						+ "(?, ?, ?, ?, ?, ?)";
+						+ "(?, ?, ?, ?, ?, ?, ?)";
 		
 		try (Connection connection = JDBCUtility.getConnection()) {
 			connection.setAutoCommit(false);
@@ -102,7 +103,7 @@ public class DatabaseRecipeDAO {
 			
 			connection.commit();
 			
-			return new Recipe(autoId, recipe_name, liquor1, liquor2, mixer, sweetener, garnish);
+			return new Recipe(autoId, recipe_name, liquor1, liquor2, mixer, sweetener, garnish, owner_id);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,6 +147,7 @@ public class DatabaseRecipeDAO {
 				String sweetener_name = resultSet.getString(15);
 				int garnish_id = resultSet.getInt(16);
 				String garnish_name = resultSet.getString(17);
+				int owner_id = resultSet.getInt(18);
 
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
@@ -153,7 +155,7 @@ public class DatabaseRecipeDAO {
 				Ingredient sweetener = new Ingredient(sweetener_id, sweetener_name, "Sweetener");
 				Ingredient garnish = new Ingredient(garnish_id, garnish_name, "Garnish");
 
-				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish);
+				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish, owner_id);
 				return recipe;
 			}
 
@@ -261,6 +263,7 @@ public class DatabaseRecipeDAO {
 				String sweetener_name = resultSet.getString(15);
 				int garnish_id = resultSet.getInt(16);
 				String garnish_name = resultSet.getString(17);
+				int owner_id = resultSet.getInt(18);
 				
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
@@ -268,7 +271,7 @@ public class DatabaseRecipeDAO {
 				Ingredient sweetener = new Ingredient(sweetener_id, sweetener_name, "Sweetener");
 				Ingredient garnish = new Ingredient(garnish_id, garnish_name, "Garnish");
 				
-				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish);
+				Recipe recipe = new Recipe(recipe_id, recipe_name, liquor1, liquor2, mixer, sweetener, garnish, owner_id);
 				
 				recipes.add(recipe);
 			}

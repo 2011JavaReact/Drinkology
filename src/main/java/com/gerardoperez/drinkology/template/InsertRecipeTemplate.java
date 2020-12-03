@@ -8,18 +8,20 @@ public class InsertRecipeTemplate {
 	private String mixer_name;
 	private String sweetener_name;
 	private String garnish_name;
+	private int owner_id;
 	
 	public InsertRecipeTemplate() {
 		super();
 	}
 	
-	public InsertRecipeTemplate(String recipe_name, String liquor1_name, String liquor2_name, String mixer_name, String sweetener_name, String garnish_name) {
+	public InsertRecipeTemplate(String recipe_name, String liquor1_name, String liquor2_name, String mixer_name, String sweetener_name, String garnish_name, int owner_id) {
 		this.setRecipe_name(recipe_name);
 		this.setLiquor1_name(liquor1_name);
 		this.setLiquor2_name(liquor2_name);
 		this.setMixer_name(mixer_name);
 		this.setSweetener_name(sweetener_name);
 		this.setGarnish_name(garnish_name);
+		this.setOwner_id(owner_id);
 	}
 
 	public String getRecipe_name() {
@@ -68,6 +70,14 @@ public class InsertRecipeTemplate {
 
 	public void setGarnish_name(String garnish_name) {
 		this.garnish_name = garnish_name;
+	}
+	
+	public int getOwner_id() {
+		return owner_id;
+	}
+
+	public void setOwner_id(int owner_id) {
+		this.owner_id = owner_id;
 	}
 	
 	@Override

@@ -59,7 +59,7 @@ public class RecipeService {
 			throw new IngredientNotFoundException("Garnish not found in the database.");
 		}
 		
-		return recipeDAO.insertRecipe(recipeTemplate.getRecipe_name(), liquor1, liquor2, mixer, sweetener, garnish);	
+		return recipeDAO.insertRecipe(recipeTemplate.getRecipe_name(), liquor1, liquor2, mixer, sweetener, garnish, recipeTemplate.getOwner_id());	
 	}
 
 	public Recipe getRecipeById(int id) throws RecipeException{
@@ -95,7 +95,6 @@ public class RecipeService {
 	}
 
 	public ArrayList<Recipe> getSomeRecipes(String recipeCriteria) throws SQLException {
-		// TODO Auto-generated method stub
 		return recipeDAO.getSomeRecipes(recipeCriteria);
 	}
 	
