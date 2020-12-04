@@ -28,7 +28,9 @@ public class DatabaseRecipeDAO {
 						+ "INNER JOIN sweetener s "
 						+ "ON r.sweetener_id = s.id "
 						+ "INNER JOIN garnish g "
-						+ "ON r.garnish_id = g.id";
+						+ "ON r.garnish_id = g.id "
+						+ "INNER JOIN users u "
+						+ "ON r.owner_id = u.id;";
 		
 		ArrayList<Recipe> recipes = new ArrayList<>();
 		
@@ -39,17 +41,17 @@ public class DatabaseRecipeDAO {
 			while(resultSet.next()) {
 				int recipe_id = resultSet.getInt(1);
 				String recipe_name = resultSet.getString(2);
-				int liquor1_id = resultSet.getInt(8);
-				String liquor1_name = resultSet.getString(9);
-				int liquor2_id = resultSet.getInt(10);
-				String liquor2_name = resultSet.getString(11);
-				int mixer_id = resultSet.getInt(12);
-				String mixer_name = resultSet.getString(13);
-				int sweetener_id = resultSet.getInt(14);
-				String sweetener_name = resultSet.getString(15);
-				int garnish_id = resultSet.getInt(16);
-				String garnish_name = resultSet.getString(17);
-				int owner_id = resultSet.getInt(18);
+				int liquor1_id = resultSet.getInt(3);
+				String liquor1_name = resultSet.getString(10);
+				int liquor2_id = resultSet.getInt(4);
+				String liquor2_name = resultSet.getString(12);
+				int mixer_id = resultSet.getInt(5);
+				String mixer_name = resultSet.getString(14);
+				int sweetener_id = resultSet.getInt(6);
+				String sweetener_name = resultSet.getString(16);
+				int garnish_id = resultSet.getInt(7);
+				String garnish_name = resultSet.getString(18);
+				int owner_id = resultSet.getInt(8);
 				
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
@@ -126,7 +128,9 @@ public class DatabaseRecipeDAO {
 				+ "ON r.sweetener_id = s.id "
 				+ "INNER JOIN garnish g "
 				+ "ON r.garnish_id = g.id "
-				+ "WHERE r.recipe_id = ? LIMIT 1";
+				+ "INNER JOIN users u "
+				+ "ON r.owner_id = u.id "
+				+ "WHERE r.recipe_id = ? LIMIT 1;";
 		
 		try (Connection connection = JDBCUtility.getConnection()) {
 			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -137,17 +141,17 @@ public class DatabaseRecipeDAO {
 			while (resultSet.next()) {
 				int recipe_id = resultSet.getInt(1);
 				String recipe_name = resultSet.getString(2);
-				int liquor1_id = resultSet.getInt(8);
-				String liquor1_name = resultSet.getString(9);
-				int liquor2_id = resultSet.getInt(10);
-				String liquor2_name = resultSet.getString(11);
-				int mixer_id = resultSet.getInt(12);
-				String mixer_name = resultSet.getString(13);
-				int sweetener_id = resultSet.getInt(14);
-				String sweetener_name = resultSet.getString(15);
-				int garnish_id = resultSet.getInt(16);
-				String garnish_name = resultSet.getString(17);
-				int owner_id = resultSet.getInt(18);
+				int liquor1_id = resultSet.getInt(3);
+				String liquor1_name = resultSet.getString(10);
+				int liquor2_id = resultSet.getInt(4);
+				String liquor2_name = resultSet.getString(12);
+				int mixer_id = resultSet.getInt(5);
+				String mixer_name = resultSet.getString(14);
+				int sweetener_id = resultSet.getInt(6);
+				String sweetener_name = resultSet.getString(16);
+				int garnish_id = resultSet.getInt(7);
+				String garnish_name = resultSet.getString(18);
+				int owner_id = resultSet.getInt(8);
 
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
@@ -175,7 +179,7 @@ public class DatabaseRecipeDAO {
 						+ "mixer_id = ?, "
 						+ "sweetener_id = ?, "
 						+ "garnish_id = ? "
-						+ "WHERE recipe_id = ?";
+						+ "WHERE recipe_id = ?;";
 		
 		try (Connection connection = JDBCUtility.getConnection()) {
 			connection.setAutoCommit(false);
@@ -240,7 +244,9 @@ public class DatabaseRecipeDAO {
 				+ "ON r.sweetener_id = s.id "
 				+ "INNER JOIN garnish g "
 				+ "ON r.garnish_id = g.id "
-				+ "WHERE l.liquor_name = ?";
+				+ "INNER JOIN users u "
+				+ "ON r.owner_id = u.id "
+				+ "WHERE l.liquor_name = ?;";
 		
 		ArrayList<Recipe> recipes = new ArrayList<>();
 		
@@ -253,17 +259,17 @@ public class DatabaseRecipeDAO {
 			while(resultSet.next()) {
 				int recipe_id = resultSet.getInt(1);
 				String recipe_name = resultSet.getString(2);
-				int liquor1_id = resultSet.getInt(8);
-				String liquor1_name = resultSet.getString(9);
-				int liquor2_id = resultSet.getInt(10);
-				String liquor2_name = resultSet.getString(11);
-				int mixer_id = resultSet.getInt(12);
-				String mixer_name = resultSet.getString(13);
-				int sweetener_id = resultSet.getInt(14);
-				String sweetener_name = resultSet.getString(15);
-				int garnish_id = resultSet.getInt(16);
-				String garnish_name = resultSet.getString(17);
-				int owner_id = resultSet.getInt(18);
+				int liquor1_id = resultSet.getInt(3);
+				String liquor1_name = resultSet.getString(10);
+				int liquor2_id = resultSet.getInt(4);
+				String liquor2_name = resultSet.getString(12);
+				int mixer_id = resultSet.getInt(5);
+				String mixer_name = resultSet.getString(14);
+				int sweetener_id = resultSet.getInt(6);
+				String sweetener_name = resultSet.getString(16);
+				int garnish_id = resultSet.getInt(7);
+				String garnish_name = resultSet.getString(18);
+				int owner_id = resultSet.getInt(8);
 				
 				Ingredient liquor1 = new Ingredient(liquor1_id, liquor1_name, "Liquor");
 				Ingredient liquor2 = new Ingredient(liquor2_id, liquor2_name, "Liquor");
