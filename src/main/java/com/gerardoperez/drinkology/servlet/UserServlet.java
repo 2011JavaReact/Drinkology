@@ -32,8 +32,8 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		//Check length to ensure that an index is in the URL. Retrieve a single user. 
-		if(request.getPathInfo().length() > 1) {
+		//Check length to ensure that an index is in the URL. Retrieve a single user.
+		if(request.getPathInfo() != null && request.getPathInfo().length() > 1) {
 			try {
 				int user_id = Integer.parseInt(request.getPathInfo().split("/")[1]);
 				User requestedUser = userService.getUserById(user_id);
@@ -53,14 +53,14 @@ public class UserServlet extends HttpServlet {
 			if (!request.isRequestedSessionIdValid()){
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "You're not authorized to access this resource.");
 			} else {
-				if (session.getAttribute("role").equals("admin")) {
+				if (((Integer) session.getAttribute("role_id")) == 1) {
 					response.getWriter().append(objectMapper.writeValueAsString(userService.getAllUsers()));
 				} else {
 					response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "You must be logged in as admin.");
 				}
 			}
-			
 		}
+		response.setContentType("application/json");
 		
 	}
 	
