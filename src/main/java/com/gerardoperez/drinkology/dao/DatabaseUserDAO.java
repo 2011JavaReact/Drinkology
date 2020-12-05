@@ -22,7 +22,7 @@ public class DatabaseUserDAO {
 	public ArrayList<User> getAllUsers() {
 		String sqlQuery = "SELECT * " 
 						+ "FROM users u " 
-						+ "INNER JOIN role r " 
+						+ "INNER JOIN roles r "
 						+ "ON u.user_role_id = r.id;";
 
 		ArrayList<User> users = new ArrayList<>();
