@@ -11,6 +11,15 @@ public class User {
 	private int role_id;
 	private String role;
 	private ArrayList<Recipe> recipes;
+
+	/**
+	 * No args constructor - used to signify a failure of some sort related to a user.
+	 */
+	public User() {
+		super();
+		username = "blank";
+		password = "blank";
+	}
 	
 	public User(int id, String username, String email, String password) {
 		this.id = id;
@@ -61,15 +70,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getRole() {
 		return role;
+	}
+
+	public int getRole_id() {
+		return role_id;
+	}
+
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
 	}
 
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
+
 	public ArrayList<Recipe> getRecipes() {
 		return recipes;
 	}
@@ -118,13 +135,6 @@ public class User {
 				+ role + "]";
 	}
 
-	public int getRole_id() {
-		return role_id;
-	}
-
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
-	}
 
 
 }

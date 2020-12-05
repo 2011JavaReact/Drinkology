@@ -42,6 +42,28 @@ public class UserService {
 	public void deleteUserById(int id) {
 		userDAO.deleteUserById(id);
 	}
+
+	/**
+	 * Returns a plain user object.
+	 * This is used by the login servlet.
+	 * @param userName The name of the user we are looking for
+	 * @return the User if found and a blank user if no user was found
+	 */
+	public User getAUserByName(String userName) {
+		ArrayList<User> users = getAllUsers();
+		for (User user : users) {
+			if (user.getUsername().equals(userName)) {
+				return user;
+			}
+		}
+		return new User();
+	}
+
+	public boolean login(User completeUser, User userTryingToLogin ) {
+		return completeUser.getPassword().equals(userTryingToLogin.getPassword())
+				&& completeUser.getUsername().equals(userTryingToLogin.getUsername());
+
+	}
 	
 
 }
