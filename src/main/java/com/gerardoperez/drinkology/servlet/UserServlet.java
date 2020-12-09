@@ -81,12 +81,16 @@ public class UserServlet extends HttpServlet {
 			newUser.setId(-1);
 			User insertedUser = userService.insertUser(newUser);
 			String insertedUserJSON = objectMapper.writeValueAsString(insertedUser);
-			
-			response.getWriter().append(insertedUserJSON);
+
+			if (insertedUserJSON.equals("null")) {
+				response.getWriter().append("could not add user. Object was null");
+			} else {
+				response.getWriter().append(insertedUserJSON);
+				response.setStatus(201);
+				response.getWriter().append("New User Created.");
+			}
 			response.setContentType("application/json");
-			response.setStatus(201);
-			response.getWriter().append("New User Created.");
-			
+
 		} catch (JsonProcessingException e) {
 			response.setStatus(400);
 		}

@@ -1,9 +1,6 @@
 package com.gerardoperez.drinkology.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import com.gerardoperez.drinkology.model.Recipe;
@@ -162,7 +159,7 @@ public class DatabaseUserDAO {
 		
 		try (Connection connection = JDBCUtility.getConnection()) {
 			connection.setAutoCommit(false);
-			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery , Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getPassword());
