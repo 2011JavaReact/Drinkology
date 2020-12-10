@@ -10,9 +10,9 @@ public class JDBCUtility {
 
     public static Connection getConnection() throws SQLException {
 
-        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String url = "jdbc:postgresql://revassess.cerqffq9i4nk.us-east-2.rds.amazonaws.com:5432/revassess";
         String username = "postgres";
-        String password = "pokemon";
+        String password = "charmander";
 
         Connection connection;
 
