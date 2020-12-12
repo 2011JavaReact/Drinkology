@@ -1,4 +1,4 @@
-        package com.gerardoperez.drinkology.util;
+package com.gerardoperez.drinkology.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,9 +10,9 @@ public class JDBCUtility {
 
     public static Connection getConnection() throws SQLException {
 
-        String url = "jdbc:postgresql://localhost:5432/postgres";
+        String url = "jdbc:postgresql://my-database.cerqffq9i4nk.us-east-2.rds.amazonaws.com:5432/project1";
         String username = "postgres";
-        String password = "pokemon";
+        String password = "charmander";
 
         Connection connection;
 
