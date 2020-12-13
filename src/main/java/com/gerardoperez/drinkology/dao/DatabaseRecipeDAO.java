@@ -90,6 +90,7 @@ public class DatabaseRecipeDAO {
 			preparedStatement.setInt(4, mixer.getId());
 			preparedStatement.setInt(5, sweetener.getId());
 			preparedStatement.setInt(6, garnish.getId());
+			preparedStatement.setInt(7, owner_id);
 			
 			if (preparedStatement.executeUpdate() != 1) {
 				throw new SQLException("Recipe insertion failed. Database not affected.");
