@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
         if (userService.login(completeUser , userTryingToLogin)) {
             HttpSession session = req.getSession();
             session.setAttribute("role_id" , completeUser.getRole_id());
-            resp.getWriter().append("Successful login for user: ").append(completeUser.getUsername());
+            resp.getWriter().append("Successful login for user: ").append(completeUser.getUsername()).append(" id is: " + completeUser.getId());
         } else {
             resp.getWriter().append("The username of password does not match...");
         }
